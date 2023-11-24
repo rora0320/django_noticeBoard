@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  django:
+    #aws에 저장된 이미지 불러올때 start
+    #image: '375442000859.dkr.ecr.ap-northeast-2.amazonaws.com/kinon-django-staging'
+
+    #로컬에 띄울때 시작
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_django
+    #로컬에 띄울때 끝
+
+    restart: 'always'
+    ports:
+      - '8000:8000' # Web UI
+volumes:
+  es-data:
+    driver: local
