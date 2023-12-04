@@ -9,4 +9,7 @@ class UserView(APIView):
     def get(self, request):
         notice = Notice.objects.all()
         serializer = NoticeDataSerializer(notice, many=True)
-        return Response(serializer.data)
+
+        response = Response(serializer.data)
+        response['Access-Control-Allow-Origin'] = '*'
+        return response

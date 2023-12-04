@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 
 
@@ -5,6 +7,6 @@ from django.db import models
 class Notice(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=100)
-    create_data = models.DateField()
+    create_date = models.DateField(default=date.today)
 
 
